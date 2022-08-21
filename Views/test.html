@@ -1,0 +1,117 @@
+<!-- HTML/CSS라이브러리인 Bootstrap이용 -->
+<!doctype html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+
+  <body>
+    <!-- <h1>Hello, world!</h1> -->
+    <!-- 버트 예제코드 복붙  -->
+    <!-- <button type="button" class="btn btn-success">Success</button> -->
+
+    <!-- navbar -> 상단 바 만들기  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">DO:NOW</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Write</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">모징</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">못누르징</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      
+
+<!-- 전달받은 2문제 제시 -->
+    <h4>문제 제시 페이지</h4>
+    <h4><br></h4>
+    <% for (var m = 0; m < ques_data.length; m++){ %>
+      <h4>문제제시</h4>
+      <h3><%= ques_data[m].problem_title%></h3>
+    <% for (var i = 0; i < ques_data[m].problem_content.length; i++){ %>
+      <p><%= ques_data[m].problem_content[i]%></p>
+    <% } %>
+    <h4><br></h4>
+    <h4>입력 예</h4>
+    <% for (var l = 0; l < ques_data[m].problem_input_ex.length; l++){ %>
+    <p><%= ques_data[m].problem_input_ex[l]%></p>
+    <% } %>
+    <h4>출력 예</h4>
+    <% for (var l = 0; l < ques_data[m].problem_input_ex.length; l++){ %>
+    <p><%= ques_data[m].problem_output_ex[l]%></p>
+    <% } %>
+    <h4><br></h4>
+    <h4>제한사항</h4>
+    <!-- 이거 반복문으로 구현해보기 -->
+    <% for (var j = 0; j < ques_data[m].restriction.length; j++){ %>
+      <p><%= ques_data[m].restriction[j] %></p>
+      <% } %>
+      <h4><br></h4>
+      <% } %>
+
+    <!-- form전송시(submit버튼 누르면) /add경로로 POST요청함(GET, POST요청만 가능) => form에 입력한 내용 서버로 전달 -->
+     <form action= "/submit" method = "POST"> 
+      <div class="container mt-3">
+        
+        <div class="form-group">
+            <label>소스코드 작성</label>
+            <input type="text" class="form-control" name = "sourceCode">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">언어선택</label>
+          <select type="text" class="form-control" id="exampleFormControlSelect1">
+            <option value="">c</option>
+            <option>java</option>
+            <option>python</option>
+            <option>c++</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+
+        </form>
+    </div>
+
+    
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+  </body>
+</html>
